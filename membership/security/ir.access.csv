@@ -8,3 +8,4 @@ access_membership_membership_category_membership_manager,membership_membership_c
 access_membership_membership_category,membership_membership_category group_user,model_membership_membership_category,base.group_user,r,
 access_membership_membership_line_membership_manager,membership.membership_line partner_manager,model_membership_membership_line,group_membership_manager,crud,
 access_product_membership_manager,product.template.user,product.model_product_template,base.group_user,crud,
+membership_category_comp_rule,Membership Category Multi-company rule,model_membership_membership_category,,crud,"['|',('company_id','=',False),('company_id', 'in', company_ids)]"

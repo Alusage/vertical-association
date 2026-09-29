@@ -22,12 +22,5 @@
             eval="[Command.link(ref('base.user_root')), Command.link(ref('base.user_admin'))]"
         />
     </record>
-    <record id="membership_category_comp_rule" model="ir.rule">
-        <field name="name">Membership Category Multi-company rule</field>
-        <field name="model_id" ref="model_membership_membership_category" />
-        <field name="global" eval="True" />
-        <field
-            name="domain_force"
-        >['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
-    </record>
+    
 </odoo>
