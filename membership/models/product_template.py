@@ -51,8 +51,10 @@ class ProductTemplate(models.Model):
     @api.constrains("membership_date_from", "membership_date_to", "membership")
     def _check_membership_dates(self):
         if self.filtered(
-            lambda record: record.membership
-            and (not record.membership_date_from or not record.membership_date_to)
+            lambda record: (
+                record.membership
+                and (not record.membership_date_from or not record.membership_date_to)
+            )
         ):
             raise ValidationError(
                 self.env._(

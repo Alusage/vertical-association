@@ -117,8 +117,10 @@ class MembershipLine(models.Model):
             lambda line: isinstance(line.id, NewId) or not line.account_invoice_id
         )
         cancelled_lines = self.filtered(
-            lambda line: line.account_invoice_id.state == "posted"
-            and line.account_invoice_id.payment_state == "reversed"
+            lambda line: (
+                line.account_invoice_id.state == "posted"
+                and line.account_invoice_id.payment_state == "reversed"
+            )
         )
         cancelled_lines.state = "canceled"
         for line in no_invoice_lines:

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2016 Antonio Espinosa <antonio.espinosa@tecnativa.com>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
 <odoo>
@@ -18,8 +18,8 @@
         </field>
     </record>
     <menuitem
-        action="membership_category_action"
         id="menu_membership_category"
+        action="membership_category_action"
         name="Membership Categories"
         parent="membership.menu_marketing_config_association"
         sequence="2"

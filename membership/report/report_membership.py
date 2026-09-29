@@ -27,9 +27,9 @@ class ReportMembership(models.Model):
         "product.product", string="Membership Product", readonly=True
     )
     membership_state = fields.Selection(
-        selection=lambda self: self.env["membership.membership_line"]
-        ._fields["state"]
-        .selection,
+        selection=lambda self: (
+            self.env["membership.membership_line"]._fields["state"].selection
+        ),
         string="Current Membership State",
         readonly=True,
     )

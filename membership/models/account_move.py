@@ -61,7 +61,7 @@ class AccountMove(models.Model):
     def action_post(self):
         # Handle validated refunds for cancelling membership lines
         res = super().action_post()
-        self.filtered(lambda m: (m.move_type == "out_invoice")).mapped(
+        self.filtered(lambda m: m.move_type == "out_invoice").mapped(
             "invoice_line_ids.membership_line_ids"
         ).write({"state": "invoiced"})
         for refund in self.filtered(
@@ -102,8 +102,9 @@ class AccountMoveLine(models.Model):
 
     def _create_membership_line(self):
         to_process = self.filtered(
-            lambda line: line.move_id.move_type == "out_invoice"
-            and line.product_id.membership
+            lambda line: (
+                line.move_id.move_type == "out_invoice" and line.product_id.membership
+            )
         )
         # Nothing to process, break.
         if not to_process:

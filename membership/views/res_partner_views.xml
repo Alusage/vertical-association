@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- MEMBERSHIP/CURRENT MEMBERS -->
-    <record model="ir.ui.view" id="membership_members_tree">
+    <record id="membership_members_tree" model="ir.ui.view">
         <field name="name">Members</field>
         <field name="model">res.partner</field>
-        <field name="priority">50</field>
+        <field name="priority" eval="50" />
         <field name="arch" type="xml">
             <list>
                 <field name="name" />
@@ -25,7 +25,7 @@
     <record id="view_res_partner_member_filter" model="ir.ui.view">
         <field name="name">res.partner.select</field>
         <field name="model">res.partner</field>
-        <field name="priority">50</field>
+        <field name="priority" eval="50" />
         <field name="arch" type="xml">
             <search>
                 <field
@@ -105,7 +105,7 @@
             </search>
         </field>
     </record>
-    <record model="ir.actions.act_window" id="action_membership_members">
+    <record id="action_membership_members" model="ir.actions.act_window">
         <field name="name">Members</field>
         <field name="path">members</field>
         <field name="res_model">res.partner</field>
@@ -124,21 +124,21 @@
                 </p>
         </field>
     </record>
-    <record model="ir.actions.act_window.view" id="action_membership_members_view_tree">
+    <record id="action_membership_members_view_tree" model="ir.actions.act_window.view">
         <field name="sequence" eval="2" />
         <field name="view_mode">list</field>
         <field name="view_id" ref="membership_members_tree" />
         <field name="act_window_id" ref="action_membership_members" />
     </record>
-    <record model="ir.actions.act_window.view" id="action_membership_members_view_form">
+    <record id="action_membership_members_view_form" model="ir.actions.act_window.view">
         <field name="sequence" eval="3" />
         <field name="view_mode">form</field>
         <field name="view_id" ref="base.view_partner_form" />
         <field name="act_window_id" ref="action_membership_members" />
     </record>
     <record
-        model="ir.actions.act_window.view"
         id="action_membership_members_view_kanban"
+        model="ir.actions.act_window.view"
     >
         <field name="sequence" eval="1" />
         <field name="view_mode">kanban</field>
@@ -146,14 +146,14 @@
         <field name="act_window_id" ref="action_membership_members" />
     </record>
     <menuitem
-        name="Members"
         id="menu_membership"
+        name="Members"
         sequence="0"
         parent="menu_association"
         action="action_membership_members"
     />
     <!-- PARTNERS -->
-    <record model="ir.ui.view" id="view_partner_form">
+    <record id="view_partner_form" model="ir.ui.view">
         <field name="name">res.partner.form.inherit</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />

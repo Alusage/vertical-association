@@ -48,9 +48,9 @@ class ResPartner(models.Model):
         help="The price negotiated by the partner",
     )
     membership_state = fields.Selection(
-        selection=lambda self: self.env["membership.membership_line"]
-        ._fields["state"]
-        .selection,
+        selection=lambda self: (
+            self.env["membership.membership_line"]._fields["state"].selection
+        ),
         compute="_compute_membership_state",
         string="Current Membership Status",
         store=True,
@@ -231,11 +231,13 @@ class ResPartner(models.Model):
             category_ids = []
             category_names = []
             lines = partner.member_line_ids.filtered(
-                lambda r, today=today: r.date_from
-                and r.date_from <= today
-                and (
-                    (r.date_to and r.date_to >= today)
-                    and (not r.date_cancel or r.date_cancel >= today)
+                lambda r, today=today: (
+                    r.date_from
+                    and r.date_from <= today
+                    and (
+                        (r.date_to and r.date_to >= today)
+                        and (not r.date_cancel or r.date_cancel >= today)
+                    )
                 )
             )
             # Use default language for getting category names

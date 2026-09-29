@@ -22,8 +22,9 @@ class MembershipCategory(models.Model):
             self.env["product.template"]
             .search([("membership_category_id", "in", categories.ids)])
             .filtered(
-                lambda t: t.company_id
-                and t.company_id != t.membership_category_id.company_id
+                lambda t: (
+                    t.company_id and t.company_id != t.membership_category_id.company_id
+                )
             )
         )
         if templates:
