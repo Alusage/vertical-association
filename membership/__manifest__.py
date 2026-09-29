@@ -3,7 +3,7 @@
 
 {
     "name": "Members",
-    "version": "19.0.1.1.0",
+    "version": "20.0.1.1.0",
     "category": "Membership",
     "development_status": "Mature",
     "author": "Odoo, Odoo Community Association (OCA)",
@@ -11,7 +11,7 @@
     "depends": ["account"],
     "data": [
         "security/membership_security.xml",
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "wizard/membership_invoice_views.xml",
         "data/membership_data.xml",
         "data/membership_category_data.xml",
